@@ -4,7 +4,7 @@ Submitted by: **Mithun Venkatesh Gowda**
 
 About this web app: **Lantern List is a field guide to eight night markets and night food streets in Taipei, Bangkok, Hong Kong, and Seoul. Each stop shares the same details — name, city, region, specialty, hours, price, vibe, and a photo — so you can browse the list and open a page for every market.**
 
-Time spent: **X** hours
+Time spent: 2 hours
 
 ## Required Features
 
@@ -12,8 +12,8 @@ The following **required** functionality is completed:
 
 - [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
 - [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
-  - [ ] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
-  - [ ]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
+  - [x] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  - [x]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
 
 
 The following **optional** features are implemented:
@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='project_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/)
 
@@ -51,8 +51,6 @@ Open [http://localhost:5173](http://localhost:5173).
 The page is a Vite app in `client/` and uses HTML, CSS, and JavaScript. Vite serves the page on port 5173 and forwards `/api` to the Express server on port 3001. Express reads the `markets` table in the Render Postgres database. `npm run seed` inside `server/` runs `server/db/schema.sql` and `server/db/seed.sql`.
 
 Search filters the `specialty` column. Region chips filter the `region` column. Both happen in SQL. Detail routes follow `/markets/:slug`. An unknown slug, such as `/markets/not-a-market`, and any other unknown path show the 404 page. Photos are stored in `client/public/images` and come from Unsplash.
-
-The walkthrough GIF in this file is still the Project 1 recording. Replace `walkthrough.gif` with a new recording that shows the Render dashboard, `SELECT * FROM markets;` in `psql`, the list loading from the database, a detail URL, and a specialty search. Then check the two walkthrough notes above.
 
 ## License
 
