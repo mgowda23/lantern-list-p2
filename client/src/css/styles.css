@@ -40,7 +40,7 @@ h3,
   color: var(--pico-primary-inverse);
   padding: 0.4rem 0.7rem;
   border-radius: 0.4rem;
-  z-index: 5;
+  z-index: 20;
 }
 
 .skip:focus {
@@ -48,6 +48,12 @@ h3,
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background:
+    radial-gradient(ellipse at top, rgba(240, 180, 41, 0.08), transparent 42%),
+    var(--pico-background-color);
   border-bottom: 1px solid rgba(246, 241, 234, 0.08);
   margin-bottom: 1.5rem;
 }
@@ -148,10 +154,6 @@ a.card {
   text-decoration: none;
 }
 
-a.card[hidden] {
-  display: none;
-}
-
 a.card article {
   height: 100%;
   margin: 0;
@@ -220,11 +222,6 @@ a.card article > p:last-child {
   margin-bottom: 1.5rem;
 }
 
-.route {
-  margin-top: 1rem;
-}
-
-.route code,
 .missing code,
 .facts code {
   font-size: 0.95rem;
