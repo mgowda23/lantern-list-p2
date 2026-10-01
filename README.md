@@ -1,34 +1,33 @@
-# WEB103 Project 1 - *Lantern List*
+# WEB103 Project 2 - *Lantern List*
 
-Submitted by: Mithun Venkatesh Gowda
+Submitted by: **Mithun Venkatesh Gowda**
 
 About this web app: **Lantern List is a field guide to eight night markets and night food streets in Taipei, Bangkok, Hong Kong, and Seoul. Each stop shares the same details — name, city, region, specialty, hours, price, vibe, and a photo — so you can browse the list and open a page for every market.**
 
-Time spent: 2-4 hours
+Time spent: **X** hours
 
 ## Required Features
+
 The following **required** functionality is completed:
 
 - [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
-- [x] **The web app displays a title**
-- [x] **The web app displays at least five unique list items, each with at least three displayed attributes (such as title, text, and image)**
-- [x] **The user can click on each item in the list to see a detailed view of it, including all database fields**
-  - [x] **Each detail view should be a unique endpoint, such as as `http://localhost:3000/markets/raohe` and `localhost:3000/markets/yaowarat`**
-- [x] **The web app serves an appropriate 404 page when no matching route is defined**
-- [x] **The web app is styled using Picocss**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
+  - [ ] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  - [ ]  **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT * FROM tablename;' to display your table contents.**
+
 
 The following **optional** features are implemented:
 
-- [x] The web app displays items in a unique format, such as cards rather than lists or animated list items
+- [x] The user can search for items by a specific attribute
 
 The following **additional** features are implemented:
 
 - [x] Filter the list by region (Taiwan, Thailand, Hong Kong, South Korea)
-- [x] Search markets by name, city, specialty, or description
+- [x] Each market has a detail view at `/markets/:slug`, and unknown paths show a 404 page
+- [x] Markets are shown as cards and the page is styled with Pico CSS
 
 ## Video Walkthrough
 
-**Note: please be sure to show the unique URL for each detailed view in the address bar.**
 Here's a walkthrough of implemented required features:
 
 <img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
@@ -36,17 +35,24 @@ Here's a walkthrough of implemented required features:
 GIF created with [Kap](https://getkap.co/)
 
 ## Notes
-To run the app:
 
-1. `npm install`
-2. `npm start`
-3. Open [http://localhost:3000](http://localhost:3000)
+Put the database settings in `server/.env`: `PGUSER`, `PGPASSWORD`, `PGHOST`, `PGPORT`, and `PGDATABASE`.
 
-Detail routes follow `/markets/:slug`. An unknown slug, such as `/markets/not-a-market`, and any other unknown path both return the styled 404 page.
+1. Open a terminal and navigate into the `client` directory.
+2. Run the command `npm install` to install the required dependencies for the `client`.
+3. Run the command `npm run dev` to run the frontend.
+4. Open a **new** terminal and navigate into the `server` directory.
+5. Run the command `npm install` to install the required dependencies for the `server`.
+6. Run the command `npm run seed` once to create and fill the `markets` table.
+7. Run the command `npm run start` to run the backend.
 
-The list items share the same fields on purpose, so Unit 2 can move this data into a database without redesigning the pages. Photos are stored in `public/images` and come from Unsplash.
+Open [http://localhost:5173](http://localhost:5173).
 
-The fiddly part was making the detail route and the 404 agree: `/markets/raohe` should render a market, while `/markets/nope` should be a 404 instead of an empty detail page.
+The page is a Vite app in `client/` and uses HTML, CSS, and JavaScript. Vite serves the page on port 5173 and forwards `/api` to the Express server on port 3001. Express reads the `markets` table in the Render Postgres database. `npm run seed` inside `server/` runs `server/db/schema.sql` and `server/db/seed.sql`.
+
+Search filters the `specialty` column. Region chips filter the `region` column. Both happen in SQL. Detail routes follow `/markets/:slug`. An unknown slug, such as `/markets/not-a-market`, and any other unknown path show the 404 page. Photos are stored in `client/public/images` and come from Unsplash.
+
+The walkthrough GIF in this file is still the Project 1 recording. Replace `walkthrough.gif` with a new recording that shows the Render dashboard, `SELECT * FROM markets;` in `psql`, the list loading from the database, a detail URL, and a specialty search. Then check the two walkthrough notes above.
 
 ## License
 
